@@ -2,8 +2,8 @@
 """
 import pygame
 
-from const import *
-import widget, surface
+from .const import *
+from . import widget, surface
 
 class Container(widget.Widget):
     """The base container widget, can be used as a template as well as stand alone.
@@ -85,8 +85,8 @@ class Container(widget.Widget):
                 sub = surface.subsurface(s,w.rect)
                 ok = True
             except: 
-                print 'container.paint(): %s not in %s'%(w.__class__.__name__,self.__class__.__name__)
-                print s.get_width(),s.get_height(),w.rect
+                print('container.paint(): %s not in %s'%(w.__class__.__name__,self.__class__.__name__))
+                print(s.get_width(),s.get_height(),w.rect)
                 ok = False
             if ok: w.paint(sub)
         
@@ -204,7 +204,7 @@ class Container(widget.Widget):
         self.chsize()
     
     def open(self,w=None,x=None,y=None):
-        from app import App #HACK: I import it here to prevent circular importing
+        from .app import App #HACK: I import it here to prevent circular importing
         if not w:
             if (not hasattr(self,'container') or not self.container) and self is not App.app:
                 self.container = App.app
@@ -331,7 +331,7 @@ class Container(widget.Widget):
     
     
     def previous(self,w):
-        print 'Container.previous: n/a'
+        print('Container.previous: n/a')
     
     def resize(self,width=None,height=None):
         #r = self.rect

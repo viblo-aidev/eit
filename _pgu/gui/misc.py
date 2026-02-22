@@ -1,6 +1,6 @@
-from const import *
-import widget
-import app
+from .const import *
+from . import widget
+from . import app
 
 class ProgressBar(widget.Widget):
     """A progress bar.

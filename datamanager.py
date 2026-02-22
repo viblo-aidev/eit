@@ -10,8 +10,8 @@ from pygame.locals import *
 
 class DataManager:
     def __del__(self):
-        glDeleteTextures(self.textures.values())
-        glDeleteTextures(self.backgrounds.values())
+        glDeleteTextures(list(self.textures.values()))
+        glDeleteTextures(list(self.backgrounds.values()))
 
     def __init__(self):
         self.textures = []

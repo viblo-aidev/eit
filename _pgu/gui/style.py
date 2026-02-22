@@ -13,7 +13,7 @@ class Style:
         for k,v in dict.items(): self.__dict__[k]=v
     
     def __getattr__(self,k):
-        import app
+        from . import app
         v = app.App.app.theme.get(self.obj.cls, self.obj.pcls, k)
         if self._cache: self.__dict__[k] = v
         return v

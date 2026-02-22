@@ -1,4 +1,4 @@
-""" An Eittris (tetris) clone
+"""An Eittris (tetris) clone
 
 mail: viblo@citro.se
 """
@@ -57,7 +57,7 @@ class BlockField:
 
     def flip(self):
         top = self.top_index() + 1
-        middle = top + (22 - top) / 2
+        middle = top + (22 - top) // 2
         for y1, y2 in zip(range(top, middle + 1), range(22, middle - 1, -1)):
             for x in range(10):
                 self.blockparts[y1][x], self.blockparts[y2][x] = (

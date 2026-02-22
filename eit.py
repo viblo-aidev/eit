@@ -1,4 +1,4 @@
-""" An Eittris (tetris) clone
+"""An Eittris (tetris) clone
 
 mail: vb@viblo.se
 """
@@ -65,7 +65,7 @@ class Scoretable:
 
     def insert_result(self, winner, losers):
         ### Update winner
-        if not self.stats.has_key(winner["Name"]):
+        if winner["Name"] not in self.stats:
             self.stats[winner["Name"]] = {
                 "Matches": 0,
                 "Score": 0,
@@ -87,7 +87,7 @@ class Scoretable:
         # print self.stats[winner["Name"]]["Max Level"]
         ### Update losers + rp for winner
         for stat in losers:
-            if not self.stats.has_key(stat["Name"]):
+            if stat["Name"] not in self.stats:
                 self.stats[stat["Name"]] = {
                     "Matches": 0,
                     "Score": 0,
@@ -108,7 +108,7 @@ class Scoretable:
             if w > l + 5:
                 rp = 5
             else:
-                rp = (w - l) / 2 + 5
+                rp = (w - l) // 2 + 5
             self.stats[winner["Name"]]["Rank Points"] += rp
             self.stats[stat["Name"]]["Rank Points"] -= rp
 
@@ -116,7 +116,7 @@ class Scoretable:
 class Main(gui.Container):
     def load_scoretable(self):
         try:
-            f = open("scoretable.dat", "r")
+            f = open("scoretable.dat", "rb")
             self.scoretable = pickle.load(f)
         except Exception:
             self.scoretable = Scoretable()
@@ -455,7 +455,6 @@ class Main(gui.Container):
             pygame.display.flip()
 
         elif self.state == "Paused":
-
             for event in pygame.event.get():
                 if event.type == QUIT:
                     self.running = False

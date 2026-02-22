@@ -1,4 +1,4 @@
-""" An Eittris (tetris) clone
+"""An Eittris (tetris) clone
 
 mail: viblo@citro.se
 """
@@ -20,6 +20,7 @@ from eit_constants import *
 
 def glutBitmapCharacter(*args):
     pass
+
 
 class PlayerField:
     """Player class. Holds info about a player."""
@@ -647,7 +648,6 @@ class PlayerField:
             if event.type == KEYDOWN and event.key == self.down:
                 self.move_block("Down")
             elif event.type == KEYDOWN and event.key == self.left:
-
                 if self.field.effects["Inverse"] is not None:
                     self.move_block("Right")
                 else:
@@ -673,7 +673,7 @@ class PlayerField:
             elif event.type == KEYDOWN and event.key == self.use_anti:
                 if self.antidotes > 0:
                     self.dm.specialsounds["Anti"].play()
-                    for k, v in self.field.effects.iteritems():
+                    for k, v in self.field.effects.items():
                         self.field.effects[k] = None
                     self.antidotes -= 1
             elif event.type == KEYDOWN and event.key == self.change_target:

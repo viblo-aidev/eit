@@ -3,7 +3,7 @@
 <p>please note that this file is alpha, and is subject to modification in
 future versions of pgu!</p>
 """
-print 'pgu.algo','This module is alpha, and is subject to change.'
+print('pgu.algo','This module is alpha, and is subject to change.')
 
 #def dist(a,b):
 #    return abs(a[0]-b[0]) + abs(a[1]-b[1])

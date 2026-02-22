@@ -2,7 +2,7 @@
 """
 import pygame
 
-import style
+from . import style
 
 class Widget:
     """Template object - base for all widgets.
@@ -69,7 +69,7 @@ class Widget:
         self.cls = 'default'
         if 'cls' in params: self.cls = params['cls']
         if 'name' in params:    
-            import form
+            from . import form
             self.name = params['name']
             if hasattr(form.Form,'form') and form.Form.form != None: 
                 form.Form.form.add(self)
@@ -78,9 +78,9 @@ class Widget:
         self.pcls = ""
         
         if params['decorate'] != False:
-            import app
+            from . import app
             if not hasattr(app.App,'app'):
-                print 'gui.widget: creating an App'
+                print('gui.widget: creating an App')
                 app.App.app = app.App()
             app.App.app.theme.decorate(self,params['decorate'])
     
@@ -134,7 +134,7 @@ class Widget:
         <pre>Widget.chsize()</pre>
         """
         if not hasattr(self,'container'): return
-        import app
+        from . import app
         if hasattr(app.App,'app'):
             if app.App.app._chsize: return
             app.App.app.chsize()
@@ -243,7 +243,7 @@ class Widget:
         <strong>Example</strong>
         <code>
         def onclick(value):
-            print 'click',value
+            print('click',value)
         
         w = Button("PGU!")
         w.connect(gui.CLICK,onclick,'PGU Button Clicked')
@@ -290,7 +290,7 @@ class Widget:
         self.send(e.type,e)
         self.event(e)
         return
-        import app
+        from . import app
         if hasattr(app.App,'app'):
             app.App.app.events.append((self,e))
         

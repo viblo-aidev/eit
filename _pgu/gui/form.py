@@ -1,6 +1,6 @@
 """
 """
-import widget
+from . import widget
 
 class Form(widget.Widget):
     """A form that automatically will contain all named widgets.
@@ -17,12 +17,12 @@ class Form(widget.Widget):
     w = gui.Input("Phil",name="firstname")
     w = gui.Input("Hassey",name="lastname")
     
-    print f.results()
-    print ''
-    print f.items()
-    print ''
-    print f['firstname'].value
-    print f['lastname'].value
+    print(f.results())
+    print('')
+    print(f.items())
+    print('')
+    print(f['firstname'].value)
+    print(f['lastname'].value)
     </code>
     """
     

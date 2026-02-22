@@ -4,7 +4,7 @@
 future versions of pgu!</p>
 """
 
-print 'pgu.ani','This module is alpha, and is subject to change.'
+print('pgu.ani','This module is alpha, and is subject to change.')
 
 import math
 import pygame
@@ -15,11 +15,11 @@ def _ani_load(tv,name,parts,frames,shape):
     n = parts.pop()
     if len(parts):
         s = l/n
-        for i in xrange(0,n):
+        for i in range(0,n):
             _ani_load(tv,name + ".%d"%i,parts[:],frames[s*i:s*(i+1)],shape)
         return
     
-    for i in xrange(0,n):
+    for i in range(0,n):
         tv.images[name+".%d"%i] = frames[i],shape
 
 def ani_load(tv,name,img,size,shape,parts):
@@ -43,8 +43,8 @@ def ani_load(tv,name,img,size,shape,parts):
     parts.reverse()
     w,h = size
     frames = []
-    for y in xrange(0,img.get_height(),h):
-        for x in xrange(0,img.get_width(),w):
+    for y in range(0,img.get_height(),h):
+        for x in range(0,img.get_width(),w):
             frames.append(img.subsurface(x,y,w,h))
     _ani_load(tv,name,parts,frames,shape)
     

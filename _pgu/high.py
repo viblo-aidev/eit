@@ -25,7 +25,7 @@ class _High:
     <p>You can iterate them:</p>
     <code>
     for e in myhigh:
-        print e.score,e.name,e.data
+        print(e.score,e.name,e.data)
     </code>
         
     <p>You can modify them:</p>
@@ -35,7 +35,7 @@ class _High:
     
     <p>You can find out their length:</p>
     <code>
-    print len(myhigh)
+    print(len(myhigh))
     </code>
     """
     
