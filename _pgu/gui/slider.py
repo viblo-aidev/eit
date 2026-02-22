@@ -11,11 +11,11 @@
 import pygame
 from pygame.locals import *
 
-from const import *
-import widget
-import app
-import table
-import basic
+from .const import *
+from . import widget
+from . import app
+from . import table
+from . import basic
 
 _SLIDER_HORIZONTAL = 0
 _SLIDER_VERTICAL = 1
@@ -117,7 +117,7 @@ class HSlider(_slider):
     def __init__(self,value,min,max,size,**params):
         params.setdefault('cls','hslider')
         _slider.__init__(self,value,_SLIDER_HORIZONTAL,min,max,size,**params)
-	
+    
 class HScrollBar(table.Table):
     """A horizontal scroll bar.
     

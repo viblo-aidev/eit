@@ -3,8 +3,8 @@
 import pygame
 from pygame.locals import *
 
-import container
-from const import *
+from . import container
+from .const import *
 
 class App(container.Container):
     """The top-level widget for an application.
@@ -38,7 +38,7 @@ class App(container.Container):
         App.app = self
         
         if theme == None: 
-            from theme import Theme
+            from .theme import Theme
             theme = Theme()
         self.theme = theme
         

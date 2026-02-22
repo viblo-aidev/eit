@@ -90,8 +90,7 @@ class ManageProfilesDialog(gui.Dialog):
         doc.add(gui.Label("Available Profiles", color=txtcolor))
 
         self.profile_list = gui.List(width=145, height=150)
-        names = profiles.keys()
-        names.sort()
+        names = sorted(profiles.keys())
         for name in names:
             self.profile_list.add(name, value=name)
             self.profile_list.resize()
@@ -143,8 +142,7 @@ class ManageProfilesDialog(gui.Dialog):
 
         profiles.write()
         self.profile_list.clear()
-        names = profiles.keys()
-        names.sort()
+        names = sorted(profiles.keys())
         for name in names:
             self.profile_list.add(name, value=name)
         self.profile_list.resize()
@@ -153,7 +151,7 @@ class ManageProfilesDialog(gui.Dialog):
     def select_profile(self, e):
         profiles = ConfigObj("profiles.cfg")
         name = self.profile_list.value
-        if name is not None and profiles.has_key(name):
+        if name is not None and name in profiles:
             self.name.value = name
             self.left.value = profiles[name]["Left"]
             self.right.value = profiles[name]["Right"]
@@ -168,7 +166,7 @@ class ManageProfilesDialog(gui.Dialog):
         profiles = ConfigObj("profiles.cfg")
         # print "."
         new_name = "Player"
-        while profiles.has_key(new_name):
+        while new_name in profiles:
             new_name += "_"
 
         profiles[new_name] = {
@@ -183,8 +181,7 @@ class ManageProfilesDialog(gui.Dialog):
         }
         profiles.write()
         self.profile_list.clear()
-        names = profiles.keys()
-        names.sort()
+        names = sorted(profiles.keys())
         for name in names:
             self.profile_list.add(name, value=name)
         self.profile_list.resize()
@@ -198,8 +195,7 @@ class ManageProfilesDialog(gui.Dialog):
             pass
         profiles.write()
         self.profile_list.clear()
-        names = profiles.keys()
-        names.sort()
+        names = sorted(profiles.keys())
         for name in names:
             self.profile_list.add(name, value=name)
         self.profile_list.resize()
@@ -347,8 +343,7 @@ class SelectProfileDialog(gui.Dialog):
 
         profiles = ConfigObj("profiles.cfg")
         self.profile_list = gui.List(width=155, height=120)
-        names = profiles.keys()
-        names.sort()
+        names = sorted(profiles.keys())
         for name in names:
             self.profile_list.add(name, value=name)
         self.profile_list.resize()
@@ -378,8 +373,7 @@ class SelectProfileDialog(gui.Dialog):
     def open(self, *params):
         profiles = ConfigObj("profiles.cfg")
         self.profile_list.clear()
-        names = profiles.keys()
-        names.sort()
+        names = sorted(profiles.keys())
         for name in names:
             self.profile_list.add(name, value=name)
         gui.Dialog.open(self, *params)

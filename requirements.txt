@@ -1,0 +1,5 @@
+pygame>=2.5
+PyOpenGL>=3.1
+PyOpenGL_accelerate>=3.1
+configobj>=5.0
+pytest>=7.0

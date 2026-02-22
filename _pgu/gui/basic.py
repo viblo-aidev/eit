@@ -3,8 +3,8 @@
 
 import pygame
 
-from const import *
-import widget
+from .const import *
+from . import widget
 
 class Spacer(widget.Widget):
     """A invisible space.
